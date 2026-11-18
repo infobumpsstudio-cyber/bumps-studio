@@ -577,7 +577,7 @@ function route(){
   window.scrollTo({top:0,behavior:'instant'});
   document.body.classList.toggle('light',v==='project');
   document.querySelectorAll('[data-logo]').forEach(i=>{i.src='img/'+i.dataset.logo+(v==='project'?'_c':'')+'.png'});
-  document.title = v==='project' ? P.find(p=>p.id===pid).t+' — BUMPS STUDIO' : 'BUMPS STUDIO — Soojin Kim';
+  document.title = v==='project' ? P.find(p=>p.id===pid).t+' — BUMPS STUDIO' : ({home:'BUMPS STUDIO — Soojin Kim',work:'Work — BUMPS STUDIO',about:'About — BUMPS STUDIO'})[v];
   try{const slug=v==='project'?'work/'+pid:(v==='home'?'':v);gtag('event','page_view',{page_title:document.title,page_location:location.origin+'/'+slug,page_path:'/'+slug});}catch(e){}
   observe();
 }
