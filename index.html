@@ -26,7 +26,9 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9N1N89V5"></script>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());gtag('config','G-KW9N1N89V5',{send_page_view:false});
+gtag('js',new Date());
+var BUMPS_INTERNAL=false;try{var q=new URLSearchParams(location.search);if(q.has('me')){if(q.get('me')==='off'){localStorage.removeItem('bumps_internal')}else{localStorage.setItem('bumps_internal','1')}window.__meMsg=q.get('me')==='off'?'off':'on';history.replaceState(null,'',location.pathname+location.hash)}BUMPS_INTERNAL=localStorage.getItem('bumps_internal')==='1'}catch(e){}
+gtag('config','G-KW9N1N89V5',BUMPS_INTERNAL?{send_page_view:false,traffic_type:'internal'}:{send_page_view:false});
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -595,7 +597,7 @@ function route(){
   document.body.classList.toggle('light',v==='project');
   document.querySelectorAll('[data-logo]').forEach(i=>{i.src='img/'+i.dataset.logo+(v==='project'?'_c':'')+'.png'});
   document.title = v==='project' ? P.find(p=>p.id===pid).t+' — BUMPS STUDIO' : ({home:'BUMPS STUDIO — Soojin Kim',work:'Work — BUMPS STUDIO',about:'About — BUMPS STUDIO'})[v];
-  try{const slug=v==='project'?'work/'+pid:(v==='home'?'':v);gtag('event','page_view',{page_title:document.title,page_location:location.origin+'/'+slug,page_path:'/'+slug});}catch(e){}
+  try{const slug=v==='project'?'work/'+pid:(v==='home'?'':v);gtag('event','page_view',Object.assign({page_title:document.title,page_location:location.origin+'/'+slug,page_path:'/'+slug},BUMPS_INTERNAL?{traffic_type:'internal'}:{}));}catch(e){}
   observe();
 }
 addEventListener('hashchange',route);
@@ -789,6 +791,7 @@ for(let i=PO.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[PO[i],PO
  addEventListener('hashchange',()=>{touched=false;set(false)});
 })();
 route();
+if(window.__meMsg)setTimeout(()=>toast(window.__meMsg==='on'?'이 기기는 이제 통계에서 제외됩니다 (내부 방문)':'내부 방문 표시를 해제했습니다'),600);
 </script>
 </body>
 </html>
