@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BUMPS STUDIO — Soojin Kim</title>
 <meta name="description" content="Bumps Studio — 브랜드 아이덴티티, 패키지, 그래픽 디자인 스튜디오. Seoul, Republic of Korea.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#1DBDF0">
+<link rel="canonical" href="https://studiobumps.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BUMPS STUDIO">
+<meta property="og:url" content="https://studiobumps.com/">
+<meta property="og:title" content="BUMPS STUDIO — 범프스 스튜디오">
+<meta property="og:description" content="브랜드 아이덴티티를 중심으로 패키지, 굿즈, 도서, 앨범 아트워크를 만드는 디자인 스튜디오. Brand identity, packaging & graphic design studio based in Seoul.">
+<meta property="og:image" content="https://studiobumps.com/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://studiobumps.com/img/og.png">
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9N1N89V5"></script>
 <script>
@@ -425,8 +442,8 @@ body.light ::selection{background:var(--cy);color:#fff}
     <p class="say">We are a design studio based in Korea.<br>Through branding, graphic design, identity design, and more, we craft experiences that evoke profound joy.</p>
     <div class="nc" id="nc" role="button" tabindex="0" aria-label="명함 뒤집기 — flip the card" aria-pressed="false">
       <div class="nc-tilt" id="ncTilt"><div class="nc-in">
-        <div class="nc-face nc-front"><img src="img/card_front.jpg" alt="Bumps Studio business card, front — B symbol on beige"><i class="glare"></i></div>
-        <div class="nc-face nc-back"><img src="img/card_back.jpg" alt="Business card: 김수진 Kim Soojin, BUMPS STUDIO, Design Service — Branding, Identity, Strategy, info.bumpsstudio@gmail.com, @bumps_studio, Seoul, Republic of Korea">
+        <div class="nc-face nc-front"><img src="img/card_front.webp" alt="Bumps Studio business card, front — B symbol on beige"><i class="glare"></i></div>
+        <div class="nc-face nc-back"><img src="img/card_back.webp" alt="Business card: 김수진 Kim Soojin, BUMPS STUDIO, Design Service — Branding, Identity, Strategy, info.bumpsstudio@gmail.com, @bumps_studio, Seoul, Republic of Korea">
           <a class="hot" style="top:81.6%;height:3.6%" href="mailto:info.bumpsstudio@gmail.com" aria-label="E-mail info.bumpsstudio@gmail.com"></a>
           <a class="hot" style="top:84.9%;height:3.4%" href="https://www.instagram.com/bumps_studio/" target="_blank" rel="noopener" aria-label="Instagram @bumps_studio"></a>
           <i class="glare"></i></div>
@@ -588,7 +605,7 @@ const idx=document.getElementById('index'), peek=document.getElementById('peek')
 P.forEach((p,i)=>{
   const r=document.createElement('a'); r.className='row'; r.href='#work-'+p.id;
   r.innerHTML=`<span class="t">${IDX[p.id]}</span><span class="c">${p.work}</span><span class="c">${p.client.replace(/ \(.*\)/,'')}</span><span class="y">${endOf(p).slice(0,4)}</span>`;
-  r.addEventListener('mouseenter',()=>{peek.style.backgroundImage=`url(img/${p.img[0]}.jpg)`;peek.classList.add('on')});
+  r.addEventListener('mouseenter',()=>{peek.style.backgroundImage=`url(img/${p.img[0]}.webp)`;peek.classList.add('on')});
   r.addEventListener('mouseleave',()=>peek.classList.remove('on'));
   idx.appendChild(r);
 });
@@ -655,7 +672,7 @@ P.forEach((p,i)=>{
   const [c,s,m]=LAYOUT[i];
   const a=document.createElement('a');a.className='card rv';a.href='#work-'+p.id;a.dataset.f=p.f;
   a.style.gridColumn=`${c} / span ${s}`;a.style.marginTop=m+'px';
-  a.innerHTML=`<div class="ph"><img src="img/${p.img[0]}.jpg" alt="${p.en}"></div>
+  a.innerHTML=`<div class="ph"><img src="img/${p.img[0]}.webp" alt="${p.en}"></div>
    <div class="cap"><h3>${p.t}</h3><span class="tg">${p.dur.slice(0,4)}</span></div>
    <div class="sub">${p.tag}</div>`;
   grid.appendChild(a);
@@ -685,7 +702,7 @@ function renderProject(id){
       <div><dt>Work · Contribution</dt><dd>${p.work} · ${p.con}</dd></div>
     </dl>
   </div>
-  <figure class="p-hero"><img src="img/${p.img[0]}.jpg" alt="${p.en} — ${p.cap[0]}"></figure>
+  <figure class="p-hero"><img src="img/${p.img[0]}.webp" alt="${p.en} — ${p.cap[0]}"></figure>
   <section class="p-body">
     <div class="label lbl"><b>(Background)</b></div>
     <h2 class="rv">${p.h}<span class="h-en">${E[0]}</span></h2>
@@ -694,7 +711,7 @@ function renderProject(id){
   </section>
   <div class="kw rv" style="${p.kw.length===2?'grid-template-columns:1fr 1fr':''}">${p.kw.map((k,j)=>`<div><span class="k">0${j+1}</span><h4>${k[0]}</h4><p>${k[1]}</p><h4 class="en">${E[2][j][0]}</h4><p class="en">${E[2][j][1]}</p></div>`).join('')}</div>
   ${p.sw?`<div class="swatches rv">${p.sw.map(s=>`<div style="background:${s[1]};color:${s[2]||'#151515'}">${s[0]}<br>${s[1]}</div>`).join('')}</div>`:''}
-  <section class="gallery">${p.img.slice(1).map((im,j)=>{const g=GL[(j+1)%GL.length];return `<figure class="rv" style="grid-column:${g[0]} / span ${Math.min(g[1],13-g[0])}"><img src="img/${im}.jpg" alt="${p.t} — ${p.cap[j+1]}"><figcaption>(${String(j+2).padStart(2,'0')}) ${p.cap[j+1]}</figcaption></figure>`}).join('')}</section>
+  <section class="gallery">${p.img.slice(1).map((im,j)=>{const g=GL[(j+1)%GL.length];return `<figure class="rv" style="grid-column:${g[0]} / span ${Math.min(g[1],13-g[0])}"><img src="img/${im}.webp" alt="${p.t} — ${p.cap[j+1]}"><figcaption>(${String(j+2).padStart(2,'0')}) ${p.cap[j+1]}</figcaption></figure>`}).join('')}</section>
   <a class="next" href="#work-${nx.id}"><span class="tiny">Next project →</span><h3>${nx.t}</h3></a>`;
 }
 
@@ -723,7 +740,7 @@ document.querySelector('.hero').addEventListener('touchmove',e=>{if(e.cancelable
   const ox=(Math.random()-.5)*140,oy=(Math.random()-.5)*110;
   a.style.left=Math.max(110,Math.min(hero.clientWidth-110,x+ox))+'px';a.style.top=Math.max(90,Math.min(hero.clientHeight-90,y+oy))+'px';
   a.style.setProperty('--rot',((Math.random()-.5)*14).toFixed(1)+'deg');
-  a.innerHTML=`<img src="img/${p.img[0]}.jpg" alt=""><div class="ft"><span>${p.t}</span><span>${endOf(p).slice(0,4)}</span></div>`;
+  a.innerHTML=`<img src="img/${p.img[0]}.webp" alt=""><div class="ft"><span>${p.t}</span><span>${endOf(p).slice(0,4)}</span></div>`;
   box.appendChild(a);requestAnimationFrame(()=>requestAnimationFrame(()=>a.classList.add('in')));
   let hold=false,dead=false;const kill=()=>{if(dead)return;if(hold){a._k=setTimeout(kill,600);return}dead=true;a.classList.add('out');setTimeout(()=>a.remove(),700)};
   a.addEventListener('pointerenter',()=>{hold=true});a.addEventListener('pointerleave',()=>{hold=false});
@@ -743,7 +760,7 @@ const PO=[[1,"A0",453,640,"#8cd5c8"],[2,"A1",640,452,"#ee202f"],[3,"A1",452,640,
 for(let i=PO.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[PO[i],PO[j]]=[PO[j],PO[i]]}
 (()=>{const g=document.getElementById('poGrid');
  const html=PO.map(([n,sz,w,h,c],i)=>`<div class="po rv" data-i="${i}">
-   <div class="po-im"><img loading="lazy" src="img/po/t${String(n).padStart(2,'0')}.jpg" width="${w}" height="${h}" alt="Poster ${n}"></div></div>`);
+   <div class="po-im"><img loading="lazy" src="img/po/t${String(n).padStart(2,'0')}.webp" width="${w}" height="${h}" alt="Poster ${n}"></div></div>`);
  let nCols=0;const lay=()=>{const n=innerWidth<=860?2:innerWidth<=1100?3:5;if(n===nCols)return;nCols=n;
    const cols=Array.from({length:n},()=>{const d=document.createElement('div');d.className='po-col';return d});const hs=new Array(n).fill(0);
    g.innerHTML='';cols.forEach(c=>g.appendChild(c));
@@ -751,7 +768,7 @@ for(let i=PO.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[PO[i],PO
    typeof observe==='function'&&observe()};
  lay();addEventListener('resize',lay);
  const pv=document.getElementById('poPv'),pvi=pv.querySelector('img');let on=null;
- const show=a=>{on=a;pvi.src=`img/po/p${String(PO[+a.dataset.i][0]).padStart(2,'0')}.jpg`;pv.classList.add('on')};
+ const show=a=>{on=a;pvi.src=`img/po/p${String(PO[+a.dataset.i][0]).padStart(2,'0')}.webp`;pv.classList.add('on')};
  const hide=()=>{on=null;pv.classList.remove('on')};
  g.addEventListener('click',e=>{const a=e.target.closest('.po');if(!a)return;e.stopPropagation();on===a?hide():show(a)});
  pv.addEventListener('click',hide);
