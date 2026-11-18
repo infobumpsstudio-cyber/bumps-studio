@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — BUMPS STUDIO</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta name="theme-color" content="#1DBDF0">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;900&family=Noto+Sans+KR:wght@500;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:#1DBDF0;color:#E3F7FE;font-family:"Gothic A1","Noto Sans KR",sans-serif;font-weight:500;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;overflow:hidden;
+    word-break:keep-all}
+  canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+  main{position:relative;z-index:1}
+  .sym{width:min(260px,60vw);display:block;margin:0 auto 34px;animation:bump 2.6s cubic-bezier(.3,1.6,.5,1) infinite}
+  @keyframes bump{0%,70%,100%{transform:none}78%{transform:translateY(-14px) rotate(-6deg) scale(1.06)}88%{transform:translateY(2px) rotate(2deg)}}
+  .code{font-weight:900;font-size:clamp(64px,14vw,160px);line-height:.9;letter-spacing:.02em;color:#F3F1EA}
+  h1{font-weight:900;font-size:clamp(20px,2.6vw,28px);margin-top:18px}
+  p{margin-top:10px;font-size:15px;line-height:1.7;color:#C2EBFA}
+  a.btn{display:inline-flex;align-items:center;gap:12px;margin-top:34px;padding:8px 8px 8px 22px;border-radius:40px;background:#F3F1EA;color:#1DBDF0;
+    font-weight:900;font-size:15px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(10,60,90,.45);transition:transform .25s cubic-bezier(.3,1.8,.5,1)}
+  a.btn b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#1DBDF0;color:#fff}
+  a.btn:hover{transform:translateY(-3px) scale(1.04)}
+</style>
+</head>
+<body>
+<canvas id="w" aria-hidden="true"></canvas>
+<main>
+  <img class="sym" src="/img/logo.png" alt="Bumps Studio">
+  <div class="code">404</div>
+  <h1>앗, 길을 잃고 쾅! 부딪혔어요</h1>
+  <p>찾으시는 페이지가 없거나 주소가 바뀌었어요.<br>Oops — this page bumped into nothing.</p>
+  <a class="btn" href="/">Back to Home <b>→</b></a>
+</main>
+<script>
+const c=document.getElementById('w'),x=c.getContext('2d');let W,H,t=0;
+function s(){const d=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}
+s();addEventListener('resize',s);
+(function f(){t+=.012;x.clearRect(0,0,W,H);x.strokeStyle='rgba(255,255,255,.28)';x.lineWidth=1;
+ for(let x0=7;x0<W+15;x0+=15){const i=x0/15;x.beginPath();for(let y=-10;y<=H+10;y+=8){const xx=x0+Math.sin(y*.045+t*2+i*.55)*3.4+Math.sin(y*.011-t+i*.13)*5;y===-10?x.moveTo(xx,y):x.lineTo(xx,y)}x.stroke()}
+ requestAnimationFrame(f)})();
+</script>
+</body>
+</html>
