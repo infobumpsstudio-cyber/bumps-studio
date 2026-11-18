@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BUMPS STUDIO — Soojin Kim</title>
 <meta name="description" content="Bumps Studio — 브랜드 아이덴티티, 패키지, 그래픽 디자인 스튜디오. Seoul, Republic of Korea.">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9N1N89V5"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-KW9N1N89V5',{send_page_view:false});
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;900&text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%E2%80%94%E2%80%93%C2%B7%E2%86%92%E2%86%90%E2%86%91%E2%86%93%E2%86%97%E2%86%BB%C2%A9%C3%97%E2%80%99%E2%80%98%E2%80%9C%E2%80%9D%E2%80%A6&display=swap" rel="stylesheet">
@@ -572,6 +578,7 @@ function route(){
   document.body.classList.toggle('light',v==='project');
   document.querySelectorAll('[data-logo]').forEach(i=>{i.src='img/'+i.dataset.logo+(v==='project'?'_c':'')+'.png'});
   document.title = v==='project' ? P.find(p=>p.id===pid).t+' — BUMPS STUDIO' : 'BUMPS STUDIO — Soojin Kim';
+  try{const slug=v==='project'?'work/'+pid:(v==='home'?'':v);gtag('event','page_view',{page_title:document.title,page_location:location.origin+'/'+slug,page_path:'/'+slug});}catch(e){}
   observe();
 }
 addEventListener('hashchange',route);
